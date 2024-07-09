@@ -23,6 +23,8 @@ This Java-based Pokémon Battle Simulator brings the thrill of Pokémon battles 
 ### 🎨 Pokémon & Moves
 🔥 Charmander  | 💧 Squirtle    | ⚡ Pikachu     | 🌿 Bulbasaur
 🐉 Charizard   | 🐢 Blastoise   | 🐭 Raichu      | 🌺 Venusaur
+
+
 Moves include:
 Tackle, Ember, Water Gun, Thundershock, Poison Sting, Vine Whip,
 Scratch, Bubble, Quick Attack, Razor Leaf, Flamethrower, Hydro Pump,
