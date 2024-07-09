@@ -85,9 +85,15 @@ class Pokemon {
         }
     }
 
-    public void heal(int amount) {
-        hp = Math.min(maxHp, hp + amount);
-        System.out.println(name + " healed " + amount + " HP!");
+    public void heal() {
+        int healAmount;
+        if (hp <= maxHp * 0.1) {
+            healAmount = (int)(maxHp * 0.8);
+        } else {
+            healAmount = (int)(maxHp * 0.4);
+        }
+        hp = Math.min(maxHp, hp + healAmount);
+        System.out.println(name + " healed " + healAmount + " HP!");
     }
 
     public void defend() {
@@ -163,7 +169,7 @@ public class PokemonBattle {
                     trainer1.getPokemon().attack(trainer2.getPokemon(), move);
                     break;
                 case "h":
-                    trainer1.getPokemon().heal(20);
+                    trainer1.getPokemon().heal();
                     break;
                 case "d":
                     trainer1.getPokemon().defend();
@@ -199,14 +205,25 @@ public class PokemonBattle {
     }
 
     public static void main(String[] args) {
+        // Define moves
         Move tackle = new Move("Tackle", 40, 1.0, null);
         Move ember = new Move("Ember", 40, 1.0, "Burn");
         Move waterGun = new Move("Water Gun", 40, 1.0, null);
         Move thundershock = new Move("Thundershock", 40, 1.0, "Paralyze");
         Move poisonSting = new Move("Poison Sting", 15, 1.0, "Poison");
+        Move vineWhip = new Move("Vine Whip", 45, 1.0, null);
+        Move scratch = new Move("Scratch", 40, 1.0, null);
+        Move bubble = new Move("Bubble", 40, 1.0, null);
+        Move quickAttack = new Move("Quick Attack", 40, 1.0, null);
+        Move razorLeaf = new Move("Razor Leaf", 55, 0.95, null);
+        Move flamethrower = new Move("Flamethrower", 90, 1.0, "Burn");
+        Move hydroPump = new Move("Hydro Pump", 110, 0.8, null);
+        Move thunderbolt = new Move("Thunderbolt", 90, 1.0, "Paralyze");
+        Move solarBeam = new Move("Solar Beam", 120, 1.0, null);
 
+        // Create Pokémon
         Pokemon charmander = new Pokemon("Charmander", 52, 43, 65);
-        charmander.addMove(tackle);
+        charmander.addMove(scratch);
         charmander.addMove(ember);
 
         Pokemon squirtle = new Pokemon("Squirtle", 48, 65, 43);
@@ -214,14 +231,30 @@ public class PokemonBattle {
         squirtle.addMove(waterGun);
 
         Pokemon pikachu = new Pokemon("Pikachu", 55, 40, 90);
-        pikachu.addMove(tackle);
+        pikachu.addMove(quickAttack);
         pikachu.addMove(thundershock);
 
         Pokemon bulbasaur = new Pokemon("Bulbasaur", 49, 49, 45);
         bulbasaur.addMove(tackle);
-        bulbasaur.addMove(poisonSting);
+        bulbasaur.addMove(vineWhip);
 
-        List<Pokemon> availablePokemon = List.of(charmander, squirtle, pikachu, bulbasaur);
+        Pokemon charizard = new Pokemon("Charizard", 84, 78, 100);
+        charizard.addMove(flamethrower);
+        charizard.addMove(scratch);
+
+        Pokemon blastoise = new Pokemon("Blastoise", 83, 100, 78);
+        blastoise.addMove(hydroPump);
+        blastoise.addMove(tackle);
+
+        Pokemon venusaur = new Pokemon("Venusaur", 82, 83, 80);
+        venusaur.addMove(solarBeam);
+        venusaur.addMove(razorLeaf);
+
+        Pokemon raichu = new Pokemon("Raichu", 90, 55, 110);
+        raichu.addMove(thunderbolt);
+        raichu.addMove(quickAttack);
+
+        List<Pokemon> availablePokemon = List.of(charmander, squirtle, pikachu, bulbasaur, charizard, blastoise, venusaur, raichu);
 
         System.out.println("Welcome to Pokémon Battle!");
         System.out.print("Enter your name: ");
